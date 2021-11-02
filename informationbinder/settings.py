@@ -141,7 +141,7 @@ STATICFILES_STORAGE='whitenoise.storage.CompressManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-django_heroku.settings(locals())
+
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -169,3 +169,4 @@ CSRF_COOKIE_SECURE=True
 SECURE_HSTS_SECONDS=31536000
 SECURE_HSTS_PRELOAD=True
 SECURE_HSTS_INCLUDE_SUBDOMAINS=True
+django_heroku.settings(locals())
