@@ -25,7 +25,7 @@ urlpatterns=[
     path('unlikes/<slug:slug>/',PostUnLikeView.as_view(),name="unliked"),
     path('category/<str:cats>',CategoryView,name='category'),
     path('about/aboutus/',AboutView.as_view(),name="about"),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-                        name='django.contrib.sitemaps.views.sitemap'),
+    #path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+     #                   name='django.contrib.sitemaps.views.sitemap'),
 
 ]
