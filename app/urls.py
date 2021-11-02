@@ -8,7 +8,7 @@ from django.urls import path
 #}
 #
 #
-#urlpatterns=[
+urlpatterns=[
 #   # path('',IndexPageView.as_view(),name='index'),
 #   # path('index/',IndexView.as_view(),name='indexpage'),
 #    path('',HomeView.as_view(),name='home'),
@@ -27,5 +27,5 @@ from django.urls import path
 #    path('about/aboutus/',AboutView.as_view(),name="about"),
 #    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
 #                        name='django.contrib.sitemaps.views.sitemap'),
-#]
+]
 #
