@@ -40,14 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.sites',
-    #'django.contrib.sitemaps',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'app',
     'blogapp',
     'ckeditor',
     'ckeditor_uploader',
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
