@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+    {% if user.id == blogpost.author.id %}
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{% static 'app/style.css' %}">
+            <title>Delete Post</title>
+        </head>
+        <body>
+        
+                <h3 class="center">Delete Post</h3>
+                <h4 class="center">{{ blogpost.post_title }}</h4>
+                <br>
+                <br>
+                <div class="form-group">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <strong>Are you Sure Want to Delete This Post?</strong>
+                    <br>
+                    <br>
+                        <button class="sbtn">Delete</button>
+                    </div>
+                </form>
+                </div>
+        </body>
+        </html>
+    {% else %}
+        <center><h3><b>Sorry! in order to delete posts you need to login </b></h3></center>
+    {% endif %}
+{% else %}
+<center><h3><b>Sorry! in order to delete posts you need to login </b></h3></center>
+{% endif %}
+
+{% endblock content %}
+

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+    <title>srearch results</title>
+</head>
+<body>
+    <h1> Search Results : </h1>
+    {% if qs|length < 1 %}
+    {% if search|length < 1 %}
+    <p>No Search results has found<p>
+        <p>Your Search query : <b>{{query}}</b>-did not match with any documents  </p>
+    <p>suggestions</p>
+    <p>Try different keywords</p>
+    {% endif %}
+    {% endif %}
+    <div class="blogapp">
+    {% for i in qs %}
+    <div class="ui items">
+        <div class="item">
+            <br>
+            <br>
+            <small id="iden">Post ID :: {{ i.pk }}</small>
+            
+          <a class="ui small image">
+            <img src="{{ i.images.url }}" alt="" id="blogimage">
+          </a>
+          <br>
+          <br>
+          <br>
+          <div class="content">
+            <a class="header" id="title">Blogpost Title ::  {{ i.title }}</a>
+            <div class="description">
+              <p>{{ i.notes|safe }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <br>
+    <br>
+    {% for i in search %}
+      <div class="ui card" id="home">
+        <div class="content">
+        <div class="image">
+        <div class="description">
+        Title  :  {{ i.post_title }}
+        </div>
+        <br>
+        <center>
+        <a href="{% url 'article-detail' i.slug  %}"><img src="{{ i.thumbnail.url }}" id="img"></a>
+        </center>
+        </div>
+        <br>
+        <h6 class="pk"> Id :  {{ i.pk }} </h6>
+        <br>
+        <div class="content">Author : {{ i.author }} </div>
+        <br>
+        <div class="meta">Posted on : {{ i.created }}</div>
+        <br>
+        <div class="intro">
+             Introducton : {{i.intro}}
+        </div>
+        </div>
+      </div>
+      <br>
+    {% endfor %}
+</div>
+</body>
+</html>
+{% endblock content %}
+

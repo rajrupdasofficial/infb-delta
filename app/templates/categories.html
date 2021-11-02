@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/index.css' %}">
+    <title>Document</title>
+</head>
+<body>
+{% if category %}
+<h3>Category--{{ cats }}</h3>
+{% for i in category %}
+<section class="home-cards" data-aos="fade-up">
+    <div>
+        <img src="{{ i.thumbnail.url }}" alt="" >
+        <h3>Introduction : {{ i.intro }}</h3>
+        <p>{{ i.author }}   {{ i.created }}</p>
+        <a href="{% url 'article-detail' i.slug %}"><b class="btn1">Read More</b></a>
+    </div>
+</section>
+{% endfor %}
+{% else %}
+<h4>No Post Added</h4>
+Want to add a post?<a href="{% url 'addpost' %}">Add a New Post For this Category</a>
+{% endif %}
+</body>
+</html>
+
+{% endblock content %}

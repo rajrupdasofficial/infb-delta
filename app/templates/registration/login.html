@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='description' content='InfroamtionBinder is a opensource website and its anytype of ads free and it is made users to share and gain knowledge about any topic , and
+    this section is InformationBinder User Login section  '>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="NCWp1y7iA64kMUORRCQYFDbGeDp0guyP8SIvu8lG478" />
+    <meta name="msvalidate.01" content="4675104CA464653581AF156843DD8A07" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "8w8f0r1n10");
+    </script>
+    <link rel="stylesheet" href="{% static 'app/login.css' %}">
+    <title>InformationBinder|User Login </title>
+</head>
+<body>
+    
+    <form action="" method="post" enctype="multipart/form-data" class="box">
+        {% csrf_token %}
+    <h1>Login</h1>
+    <input type="text" name="username" placeholder="Username..." class="form-control">
+    <input type="password" name="password" placeholder="Password..." class="form-control" >
+    <input type="submit" name="" value="Login">
+    <p id="errors">{{ form.errors }}</p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='description' content='InfroamtionBinder is a opensource website and its anytype of ads free and it is made users to share and gain knowledge about any topic , and
+       this section is InformationBinder User Signup section  '>
+    <meta charset="UTF-8" />
+    <meta name="google-site-verification" content="NCWp1y7iA64kMUORRCQYFDbGeDp0guyP8SIvu8lG478" />
+    <meta name="msvalidate.01" content="4675104CA464653581AF156843DD8A07" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "8w8f0r1n10");
+    </script>
+    <script
+      src="https://kit.fontawesome.com/a81368914c.js"
+      crossorigin="anonymous"
+      ></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'app/register.css' %}">
+    <title>Informationbinder|Sign in & Sign up Form</title>
+  </head>
+  <body>
+    <body>
+        <img class="wave" src="{% static 'app/images/wave.png' %}" alt="{% static 'images/b.jpg'  %}" >
+        <div class="container">
+            <div class="img">
+                <img src="{% static 'app/images/bg.svg' %}" alt="{% static 'images/b.jpg'  %}">
+            </div>
+            <div class="login-content">
+                <form enctype="multipart/form-data" method="POST" action="">
+                    {% csrf_token %}
+                    <img src="{% static 'app/images/avatar.svg' %}" alt="{% static 'images/b.jpg'  %}">
+                    <h2 class="title">Welcome</h2>
+                       <div class="input-div one">
+                          <div class="i">
+                                  <i class="fas fa-user"></i>
+                          </div>
+                          <div class="div">
+                                  <h5>Username</h5>
+                                  <!--<input type="text" class="input">-->
+                                  {{ form.username }}
+                          </div>
+                       </div>
+                       <div class="input-div one">
+                        <div class="i">
+                                <i class="fas fa-at"></i>
+                        </div>
+                        <div class="div">
+                                <h5>Email</h5>
+                                <!--<input type="text" class="input">-->
+                                {{ form.email }}
+                        </div>
+                     </div>
+                       <div class="input-div pass">
+                          <div class="i"> 
+                               <i class="fas fa-lock"></i>
+                          </div>
+                          <div class="div">
+                               <h5>Password</h5>
+                               <!--<input type="password" class="input">-->
+                               {{ form.password1 }}
+                       </div>
+                    </div>
+                    <div class="input-div pass">
+                        <div class="i"> 
+                             <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                             <h5>Retype Password</h5>
+                             <!--<input type="password" class="input">-->
+                             {{ form.password2 }}
+                     </div>
+                  </div>
+                    <input type="submit" class="btn" value="Signup">
+                    {{ form.errors }}
+                </form>
+            </div>
+        </div>
+        <script src="{% static 'app/js/register.js' %}"></script>
+    </body>
+    </html>
+{% endblock content %}

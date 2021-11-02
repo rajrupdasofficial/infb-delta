@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<head>
+    <title>Add Post</title>
+</head>
+<center>
+<h1>Add Post </h1>
+</center>
+<br>
+<br>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <center>
+        {{ form.as_p }}
+        {{ form.media }}
+        <br>
+        <button type="submit" class="btn btn-primary">Add Post</button>
+        </center>
+    </form>
+</div>
+<script>
+    var name="{{ user.id }}";
+    document.getElementById("max").value=name;
+</script>
+{% else %}
+<center><h3><b>Sorry! In order to add a new post you need to Signup</b></h3></center>
+{% endif %}
+{% endblock content %}

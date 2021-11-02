@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>About us</title>
+    <center >About us</center>
+{% for i in about %}
+<h6>{{ i.aboutus|safe }}</h6>
+{% endfor %}
+{% endblock content %}
