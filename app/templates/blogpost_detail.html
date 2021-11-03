@@ -12,9 +12,7 @@
 </head>
 <body>
     <div class="container" id="details" data-aos="fade-right">
-        <img src="{{ blogpost.thumbnail.url }}" class="images" alt="{% static 'images/b.jpg'  %}"  data-aos="fade-up">
-        <br>
-        <br>
+        <img src="{{ blogpost.thumbnail.url }}" class="dimg" alt="{% static 'images/b.jpg'  %}"  data-aos="fade-up">
         <div class="center">
             {% if user.is_authenticated %}
             {% if user.id == blogpost.author.id %}
@@ -35,18 +33,15 @@
         <br>
         <h2 class="intro"><u>{{ blogpost.intro }}</u> </h2>
         <br>
-        <center>
-            <p class="page">Author name:<b>  {{ blogpost.author }}</b>--<span>Last commit:  {{ blogpost.updated }} </span> </p>
-            <!-- <h5 class="text">{{ blogpost.post_title }} </h5>-->
-        </center>
-        <br>
         <strong><h4 class="details"><u>Full Story:</u></h4><br></strong>
         <h5 class="content">{{ blogpost.content|safe }} </h5>
         <hr>
         <br>
-        <br>
+        <center>
+            <p class="page">Written By:<b>  {{ blogpost.author }}</b>--<span>last update:  {{ blogpost.updated }} </span> </p>
+            <!-- <h5 class="text">{{ blogpost.post_title }} </h5>-->
+        </center>
         <hr>
-        <br>
         {% if user.is_authenticated %}
         <form action="{% url 'liked' blogpost.slug %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}

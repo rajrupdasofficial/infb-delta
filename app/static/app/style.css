@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 a{
@@ -9,8 +10,32 @@ a{
     text-decoration: none;
 }
 
-img{
-    width: 100%;
+.dimg{
+    width: 124%;
+    height: 550px;
+    image-rendering: -webkit-optimize-contrast;
+    position: relative;
+    top: -48px;
+    left:-150px;
+    overflow: hidden;
+}
+@media(max-width: 780px){
+    .dimg{
+        width: 100%;
+        height: auto;
+        top: -48px;
+        left: 0;
+        overflow: hidden;
+    }
+}
+@media(max-width:1280px){
+    .dimg{
+        width: 118%;
+        height: 550xp;
+        top: -48px;
+        left: -60px;
+        overflow: hidden;   
+    }
 }
 .card{
     background:aliceblue;
@@ -48,6 +73,7 @@ img{
     width: 100%;
     max-width: 1920;
     position: relative;
+    overflow: hidden;
 }
 #image:hover{
     transition: translateY(-0.5%);
