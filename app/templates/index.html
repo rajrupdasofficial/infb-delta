@@ -10,7 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="NCWp1y7iA64kMUORRCQYFDbGeDp0guyP8SIvu8lG478" />
     <link rel="stylesheet" href="{% static 'app/index.css' %}">
-    <title>Index</title>
+    
+    <title>Home</title>
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -22,9 +23,12 @@
 <body>
      <header class="showcase" data-aos="fade-in">
          <h2 id="text"></h2>
-         <p>Working on new idea ? post them here</p>
-         <a href="" class="btns">Explore</a>
+         <p>Today! Whats on your mind?</p>
+         
      </header>
+     <hr>
+     <center><h3 id="stories">Latest stories</h3></center>
+     <hr>
      <!---home cards section 1--->
     {% for i in page_obj %}
         <section class="home-cards" data-aos="fade-up">
@@ -32,8 +36,9 @@
                 <img src="{{ i.thumbnail.url }}" alt="{% static 'images/b.jpg'  %}" >
                 <h3>{{ i.intro }}</h3>
                 <p>{{ i.author }}   {{ i.created }}</p>
-                <a href="{% url 'category' i.category  %}"><small><b>Category-{{ i.category }}</b></small><br>
+                <a href="{% url 'category' i.category  %}"><small id="category"><b>Category-{{ i.category }}</b></small><br><br>
                 <a href="{% url 'article-detail' i.slug %}"><b class="btn1">Read More</b></a>
+                <hr>
             </div>
         </section>
     {% endfor %} 
