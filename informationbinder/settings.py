@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'blogapp',
     'ckeditor',
     'ckeditor_uploader',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -157,6 +159,18 @@ MESSAGE_TAGS={
 }
 LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY':config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+    'CLOUDINARY_URL':config('CLOUDINARY_URL'),
+}
+
+
+
+
 
 #HTTPS settings
 #SESSION_COOKIE_SECURE=True
