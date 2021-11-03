@@ -162,10 +162,10 @@ LOGOUT_REDIRECT_URL='home'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY':config('API_KEY'),
-    'API_SECRET': config('API_SECRET'),
-    'CLOUDINARY_URL':config('CLOUDINARY_URL'),
+    'CLOUD_NAME': 'hpblpxdej',
+    'API_KEY':'398484373389542',
+    'API_SECRET': '0LB9gLzmHqtYkIpuFW58HnFZ6FM',
+    'CLOUDINARY_URL':'cloudinary://398484373389542:0LB9gLzmHqtYkIpuFW58HnFZ6FM@hpblpxdej',
 }
 
 

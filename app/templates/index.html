@@ -4,65 +4,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="msvalidate.01" content="4675104CA464653581AF156843DD8A07" />        
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="NCWp1y7iA64kMUORRCQYFDbGeDp0guyP8SIvu8lG478" />
-    <link rel="stylesheet" href="{% static 'app/index.css' %}">
-    
-    <title>Home</title>
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "8w8f0r1n10");
-    </script>
+    <link rel="stylesheet" href="{% static 'app/style.css' %}" >
+    <title>Blog Detail</title>
 </head>
 <body>
-     <header class="showcase" data-aos="fade-in">
-         <h2 id="text"></h2>
-         <p>Today! Whats on your mind?</p>
-         
-     </header>
-     <hr>
-     <center><h3 id="stories">Latest stories</h3></center>
-     <hr>
-     <!---home cards section 1--->
-    {% for i in page_obj %}
-        <section class="home-cards" data-aos="fade-up">
-            <div>
-                <img src="{{ i.thumbnail.url }}" alt="{% static 'images/b.jpg'  %}" >
-                <h3>{{ i.intro }}</h3>
-                <p>{{ i.author }}   {{ i.created }}</p>
-                <a href="{% url 'category' i.category  %}"><small id="category"><b>Category-{{ i.category }}</b></small><br><br>
-                <a href="{% url 'article-detail' i.slug %}"><b class="btn1">Read More</b></a>
-                <hr>
-            </div>
-        </section>
-    {% endfor %} 
-    <br>
-    <br>
-    <center>
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo First</a>
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    <div class="container" id="details" data-aos="fade-right">
+        <img src="{{ blogpost.thumbnail.url }}" class="dimg" alt="{% static 'images/b.jpg'  %}"  data-aos="fade-up">
+        <div class="center">
+            {% if user.is_authenticated %}
+            {% if user.id == blogpost.author.id %}
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item" href="{% url 'update' blogpost.slug %}"><button type="button" class="btn btn-outline-info">Edit</button></a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete' blogpost.slug %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></li>
+                    </ul>
+                    </div>
+                </div>
+            {% endif %}
+            {% endif %}
+        </div>
+        <br>
+        <h2 class="intro"><u>{{ blogpost.intro }}</u> </h2>
+        <br>
+        <strong><h4 class="details"><u>Full Story:</u></h4><br></strong>
+        <h5 class="content">{{ blogpost.content|safe }} </h5>
+        <hr>
+        <br>
+        <center>
+            <p class="page">Written By:<b>  {{ blogpost.author }}</b>--<span>last update:  {{ blogpost.updated }} </span> </p>
+            <!-- <h5 class="text">{{ blogpost.post_title }} </h5>-->
+        </center>
+        <hr>
+        {% if user.is_authenticated %}
+        <form action="{% url 'liked' blogpost.slug %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <a href="{% url 'liked' blogpost.slug %}"><button class="btn btn-primary">Like {{ blogpost.likes.count }}</button></a>
+        </form>
+        <br>
+        <br>
+        <form action="{% url 'unliked' blogpost.slug %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!--<a href="{% url 'unliked' blogpost.slug %}"><button class="btn btn-danger">Unlike {{ blogpost.unlikes.count }}</button></a>-->
+        </form>
         {% endif %}
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo</a>
-    {% endif %}
-    </center>
-    <footer class="bg-light text-center text-lg-start">
-  <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-         <a href="{% url 'about' %}"> <b> Read story </b></a><br>
-        © 2021 Copyright: System all rights Reserved by Developers  of Information-Binder
+        <hr>
     </div>
-  <!-- Copyright -->
-    </footer>
-    <script src="{% static 'app/js/main.js' %}"></script>
 </body>
+</html>
 {% endblock content %}

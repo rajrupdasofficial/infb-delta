@@ -12,7 +12,7 @@ from django.core.paginator import Paginator
 from django.http import Http404
 class HomeView(ListView):
     model=BlogPost
-    template_name='index.html'
+    template_name='home.html'
     slug_field='slug'
     ordering=['-created']
     paginate_by=5
@@ -32,7 +32,7 @@ class HomeView(ListView):
             return super(HomeView,self).paginate_queryset(queryset,page_size)
 class HomePageView(ListView):
     model=BlogPost
-    template_name='index.html'
+    template_name='home.html'
     slug_field='slug'
     ordering=['-created']
     paginate_by=5
@@ -46,7 +46,7 @@ class HomePageView(ListView):
 
 class BlogDetailView(DetailView):
     model=BlogPost
-    template_name='blogpost_detail.html'
+    template_name='index.html'
 
 
 class AboutView(TemplateView):
