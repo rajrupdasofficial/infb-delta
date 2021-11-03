@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-66&ehsp*$jb0dp2r74-i2g4b@tbh@q!lcckcsg6irz6p&3nv_8'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'informationbinder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'devblogs',
-        'HOST':'localhost',
-        'PORT':'5432',
-        'USER':'postgres',
-        'PASSWORD':'passkey',
+        'NAME':config('DB_NAME'),
+        'HOST':config('DB_HOST'),
+        'PORT':config('DB_PORT'),
+        'USER':config('DB_USER'),
+        'PASSWORD':config('DB_PASSWORD'),
     }
 }
 
